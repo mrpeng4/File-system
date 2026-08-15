@@ -104,6 +104,7 @@ class BaseFunctions:
                 if carry_on:
                     if filetype_dot in self.EDITABLE_EXTENSIONS:
                         print(f"Made file {file}")
+                        self.current_path[file] = ""
                         edit_y_n = input(f"do you want to edit the {filetype} file right now?\nEnter Yes or No: ")
                         if edit_y_n.lower().strip() == "yes":
                             text = self.textedit_or(file)

@@ -2,9 +2,6 @@ import json
 import time
 import os
 
-from test import current_path
-
-
 class BaseFunctions:
     def __init__(self):
         with open("Root.pilu", "r+") as path:

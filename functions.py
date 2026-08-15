@@ -282,5 +282,5 @@ class BaseFunctions:
             for files in self.current_path:
                 print(files)
         else:
-            print("there are no files in the Root folder to list :(")
+            print("there are no files in the current folder to list :(")
 

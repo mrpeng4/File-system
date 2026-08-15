@@ -87,6 +87,36 @@ class BaseFunctions:
                 lines.append(line)
             return "\n".join(lines)
 
+    def support_for_make_file(self, filename, file, filetype_dot):
+        carry_on = True
+        for symbol in self.special_char:
+            if symbol in filename:
+                print(f"\"{symbol}\" this character is not allowed in a file name.")
+                carry_on = False
+                break
+
+        if carry_on:
+            if filetype_dot in self.EDITABLE_EXTENSIONS:
+                print(f"Made file {file}")
+                self.current_path[file] = ""
+                edit_y_n = input(f"do you want to edit the {file} file right now?\nEnter Yes or No: ")
+                if edit_y_n.lower().strip() == "yes":
+                    text = self.textedit_or(file)
+                    self.current_path[file] = text
+                    with open("Root.pilu", "w") as data:
+                        json.dump(self.system, data, indent=4)
+                else:
+                    self.current_path[file] = ""
+                    with open("Root.pilu", "w") as data:
+                        json.dump(self.system, data, indent=4)
+            else:
+                print("we only support specific types of file types of filetypes\nsorry the rest are in development :(")
+                filetypes_inquire = input("type Yes to see the supported filetypes else type No: ")
+                if filetypes_inquire.lower().strip() == "yes":
+                    print(self.EDITABLE_EXTENSIONS)
+                else:
+                    pass
+
     def makefile(self, file_name, file_type):
         filename = file_name.strip()
         filetype = file_type.strip()
@@ -94,34 +124,16 @@ class BaseFunctions:
         if 0 < len(filetype) <= 8:
             if filename != "":
                 file = filename + "." + file_type
-                carry_on = True
-                for symbol in self.special_char:
-                    if symbol in filename:
-                        print(f"\"{symbol}\" this character is not allowed in a file name.")
-                        carry_on = False
-                        break
-
-                if carry_on:
-                    if filetype_dot in self.EDITABLE_EXTENSIONS:
-                        print(f"Made file {file}")
-                        self.current_path[file] = ""
-                        edit_y_n = input(f"do you want to edit the {filetype} file right now?\nEnter Yes or No: ")
-                        if edit_y_n.lower().strip() == "yes":
-                            text = self.textedit_or(file)
-                            self.current_path[file] = text
-                            with open("Root.pilu", "w") as data:
-                                json.dump(self.system, data, indent=4)
-                        else:
-                            self.current_path[file] = ""
-                            with open("Root.pilu", "w") as data:
-                                json.dump(self.system, data, indent=4)
+                try:
+                    self.current_path[file]
+                except KeyError:
+                    self.support_for_make_file(filename, file, filetype_dot)
+                else:
+                    confirmation = input(f"You are replace your original {file} please confirm by typing yes: ")
+                    if confirmation.lower().strip() == "yes":
+                        self.support_for_make_file(filename, file, filetype_dot)
                     else:
-                        print("we only support specific types of file types of filetypes\nsorry the rest are in development :(")
-                        filetypes_inquire = input("type Yes to see the supported filetypes else type No: ")
-                        if filetypes_inquire.lower().strip() == "yes":
-                            print(self.EDITABLE_EXTENSIONS)
-                        else:
-                            pass
+                        print(f"Not replaced the original {file}")
             else:
                 print("please provide a filename")
         else:
@@ -285,3 +297,21 @@ class BaseFunctions:
         else:
             print("there are no files in the current folder to list :(")
 
+    def delete(self, file):
+        try:
+            self.current_path[file]
+        except KeyError:
+            print(f"this {file} does not exists in the folder")
+        else:
+            confirmation = input(f"You are deleting {file} please confirm by typing yes: ")
+            if confirmation.lower().strip() == "yes":
+                self.current_path.pop(file)
+                with open("Root.pilu", "w") as data:
+                    json.dump(self.system, data, indent=4)
+                print(f"Successfully deleted {file}")
+            else:
+                print(f"Not deleted {file}")
+
+
+    def clear(self):
+        print("\n" * 50)

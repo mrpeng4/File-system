@@ -103,6 +103,7 @@ class BaseFunctions:
 
                 if carry_on:
                     if filetype_dot in self.EDITABLE_EXTENSIONS:
+                        print(f"Made file {file}")
                         edit_y_n = input(f"do you want to edit the {filetype} file right now?\nEnter Yes or No: ")
                         if edit_y_n.lower().strip() == "yes":
                             text = self.textedit_or(file)
@@ -169,6 +170,7 @@ class BaseFunctions:
                     break
 
             if carry_on:
+                print(f"Made folder {folder_name}")
                 self.current_path[folder_name] = {}
                 with open("Root.pilu", "w") as data:
                     json.dump(self.system, data, indent=4)

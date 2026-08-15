@@ -100,3 +100,17 @@ Restart your Terminal or PowerShell window and type:
 
 ```bash
 pilu
+```
+### Uninstallation
+
+If you ever want to remove `pilu` and all of its virtual files from your machine, run the command for your operating system:
+
+**macOS / Linux (Terminal)**
+This command deletes the hidden application folder and removes the terminal shortcut:
+```bash
+rm -rf "$HOME/Library/Application Support/pilu" && sudo rm -f /usr/local/bin/pilu
+```
+**Windows (Powershell)**
+```bash
+Remove-Item -Recurse -Force "$env:LOCALAPPDATA\pilu"
+```

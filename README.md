@@ -14,15 +14,6 @@ A Python-based virtual file system CLI application that simulates full directory
 - Interactive File Editor: Multi-line terminal-based text editor supporting line-by-line input, saving, and exiting.
 - Persistent Storage: Automatically syncs all virtual file system changes to Root.pilu.
 
-## Installation and Setup
-
-1. Ensure Python 3.x is installed on your system.
-2. Place `main.py`, `functions.py`, `Root.pilu`, and `User_data.pilu` in the same working directory.
-3. Launch the application from your terminal:
-   ```bash
-   python main.py
-   ```
-
 ## How to Use
 
 ### 1. Authentication
@@ -83,3 +74,29 @@ File creation supports extensions up to 8 characters in length. Text editing ope
 - `functions.py`: Class implementation containing file system logic, authentication, and editor routines.
 - `Root.pilu`: JSON database file storing virtual files and folder structure.
 - `User_data.pilu`: JSON store holding authentication credentials.
+
+## [>] Installation & Setup Guide
+
+### Prerequisites
+* **macOS**: Python 3 installed (check with `python3 --version` in Terminal. Install via [python.org](https://www.python.org/) or `brew install python` if needed).
+* **Windows**: Python 3.x installed and added to your system `PATH`.
+
+---
+
+### Option 1: Automatic One-Line Installation (Recommended)
+
+Open your terminal or PowerShell and run the command matching your operating system:
+
+| Operating System | Terminal Command |
+| :--- | :--- |
+| **macOS / Linux** | `curl -fsSL https://raw.githubusercontent.com/mrpeng4/File-system/main/install.sh \| bash` |
+| **Windows (PowerShell)** | `iwr -useb https://raw.githubusercontent.com/mrpeng4/File-system/main/install.ps1 \| iex` |
+
+> **macOS Note**: The script uses `sudo` to create `/usr/local/bin/pilu`, so macOS may prompt you for your admin password during installation.  
+> **Windows Note**: If PowerShell blocks script execution, run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first, then run the installer script ;)
+
+#### Verify Installation
+Restart your Terminal or PowerShell window and type:
+
+```bash
+pilu

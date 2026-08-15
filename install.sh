@@ -12,6 +12,8 @@ for FILE in "${FILES[@]}"; do
     curl -fsSL "$RAW_BASE_URL/$FILE" -o "$TARGET_DIR/$FILE"
 done
 
+sudo mkdir -p /usr/local/bin
+
 WRAPPER="/usr/local/bin/pilu"
 echo "#!/bin/bash" | sudo tee $WRAPPER > /dev/null
 echo "cd \"$TARGET_DIR\"" | sudo tee -a $WRAPPER > /dev/null

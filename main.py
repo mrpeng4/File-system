@@ -1,5 +1,51 @@
 from functions import BaseFunctions
 import json
+import sys
+import time
+
+
+def animate_pilu_fill():
+    logo = [
+        "████  ██  █     █  █",
+        "█  █  ██  █     █  █",
+        "████  ██  █     █  █",
+        "█     ██  █     █  █",
+        "█     ██  ████  ████"
+    ]
+
+    shades = [' ', '░', '▒', '▓', '█']
+    for _ in range(len(logo)):
+        print()
+
+    total_steps = 15
+
+    for step in range(total_steps + 1):
+        sys.stdout.write(f'\x1b[{len(logo)}A')
+
+        for row_idx, row_str in enumerate(logo):
+            inv_row = (len(logo) - 1) - row_idx
+
+            fill_level = step - (inv_row * 2)
+
+            if fill_level < 0:
+                char_to_use = shades[0]
+            elif fill_level >= len(shades) - 1:
+                char_to_use = shades[4]
+            else:
+                char_to_use = shades[fill_level]
+
+            animated_row = ""
+            for char in row_str:
+                if char == '█':
+                    animated_row += char_to_use
+                else:
+                    animated_row += ' '
+
+            sys.stdout.write('\x1b[2K')
+            print(animated_row)
+
+        time.sleep(0.19)
+animate_pilu_fill()
 
 functions = BaseFunctions()
 

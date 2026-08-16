@@ -261,7 +261,7 @@ class BaseFunctions:
         print("for security reasons please provide a answer to these question: Don't worry this data is only saved on you computer")
         question_1 = input("the city you were born: ")
         question_2 = input("your favourite item: ")
-        if username.strip().lower() != username.strip().lower():
+        if username.strip().lower() != password.strip().lower():
             if username.strip().lower() != "forget" and password.strip().lower() != "forget":
                 if username != "" and password != "":
                     if " " not in username and " " not in password:

@@ -2,7 +2,12 @@ from functions import BaseFunctions
 import json
 import sys
 import time
+import os
 
+if getattr(sys, 'frozen', False):
+    os.chdir(os.path.dirname(sys.executable))
+else:
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def animate_pilu_fill():
     logo = [

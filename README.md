@@ -22,7 +22,7 @@ A Python-based virtual file system CLI application that simulates full directory
 
 ### 1. Authentication
 - On initial launch, if no account details exist in `User_data.pilu`, you will be prompted to sign up by creating a username and password.
-<img width="828" height="458" alt="ezgif com-video-to-gif-converter-3" src="https://github.com/user-attachments/assets/0c082ed6-8f05-4413-b470-ef94d76cd5cc" />
+<img width="828" height="468" alt="ScreenRecording2026-08-16at10 02 41PM-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/b4ab442c-bbec-49d6-89ca-3512186971f0" />
 
 - On subsequent launches, enter your credentials at the prompt to log in.
 <img width="828" height="458" alt="ezgif com-gif-maker" src="https://github.com/user-attachments/assets/f79940d7-8283-4c3c-bafd-ab44697a176e" />
@@ -165,3 +165,8 @@ rm -rf "$HOME/Library/Application Support/pilu" && sudo rm -f /usr/local/bin/pil
 ```bash
 Remove-Item -Recurse -Force "$env:LOCALAPPDATA\pilu"
 ```
+# Forget Password
+Incase you forgot your password you can type forget in both entries during login to trigger the forget function which makes you type you the security questions you 
+entered when you signed up and if they are correct you sign up again replacing your original password and username. No data is lost.
+
+<img width="828" height="468" alt="ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/9ee44076-0729-477b-a0d5-36867958fd71" />

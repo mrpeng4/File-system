@@ -2,6 +2,8 @@ import json
 import time
 import os
 import sys
+import socket
+
 
 class BaseFunctions:
     def __init__(self):
@@ -228,16 +230,44 @@ class BaseFunctions:
         os.environ.setdefault('TERM', 'xterm-256color')
         os.system('cls' if os.name == 'nt' else 'clear')
 
+    def wrapper_forget(self):
+        with open("User_data.pilu", "r") as data:
+            user_data = json.load(data)
+        print("it seems like you forgot your username or password please connect to the internet continue ")
+        self.forget(user_data["question_1"], user_data["question_2"])
+
+    def forget(self, question_1, question_2):
+        confirmation = input("do you want to continue yes/no: ")
+        self.clear_terminal()
+        if confirmation.lower().strip() == "yes":
+            print("Please answer these question like when you answered them on signup to recover you account: ")
+            user_ans_1 = input("the city you were born: ")
+            user_ans_2 = input("your favrouite item: ")
+            if question_1 == user_ans_1 and question_2 == user_ans_2:
+                print("Correct answer you can signup again your data is not lost!")
+                self.signup()
+            else:
+                self.clear_terminal()
+                print("Wrong answer")
+                self.wrapper_forget()
+        else:
+            self.clear_terminal()
+            self.login()
+
     def signup(self):
         print("it seems like you don't have an account please make one\nplease fill in these details:")
         username = input("Username: ").strip()
         password = input("Password: ").strip()
+        print("for security reasons please provide a answer to these question: Don't worry this data is only saved on you computer")
+        question_1 = input("the city you were born: ")
+        question_2 = input("your favrouite item: ")
         if username != "" and password != "":
             if " " not in username and " " not in password:
-
                 user_data = {
                     "username": username,
                     "password": password,
+                    "question_1": question_1,
+                    "question_2": question_2
                 }
                 with open("User_data.pilu", "w") as data:
                     json.dump(user_data, data)
@@ -261,15 +291,20 @@ class BaseFunctions:
         username = input("Username: ").strip()
         password = input("Password: ").strip()
         if username != "" and password != "":
-            if user_data["username"] == username and user_data["password"] == password:
-                self.clear_terminal()
-                print("login successful!")
-                time.sleep(2)
-                self.clear_terminal()
+            if username.lower().strip() != "forget" and password.lower().strip() != "forget":
+                if user_data["username"] == username and user_data["password"] == password:
+                    self.clear_terminal()
+                    print("login successful!")
+                    time.sleep(2)
+                    self.clear_terminal()
+                else:
+                    self.clear_terminal()
+                    print("Wrong username or password.")
+                    self.login()
             else:
                 self.clear_terminal()
-                print("Wrong username or password.")
-                self.login()
+                print("it seems like you forgot your username or password")
+                self.forget(user_data["question_1"], user_data["question_2"])
         else:
             self.clear_terminal()
             print("Please enter valid details don't leave anything blank")

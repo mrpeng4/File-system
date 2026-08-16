@@ -287,8 +287,10 @@ class BaseFunctions:
                     self.signup()
             else:
                 print("you cannot keep the username or password as \"forget\"")
+                self.signup()
         else:
             print("the username can't be the same as the password")
+            self.signup()
 
     def login(self):
         print("Please login")

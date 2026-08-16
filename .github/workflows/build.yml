@@ -1,0 +1,53 @@
+name: Build Pilu Executables
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+
+    - name: Build Executable
+      run: |
+        pyinstaller --onefile --name pilu main.py
+
+    - name: Package Mac Release
+      if: runner.os == 'macOS'
+      run: |
+        mkdir pilu-release
+        cp dist/pilu pilu-release/
+        cp Root.pilu pilu-release/
+        cp User_data.pilu pilu-release/
+        zip -r pilu-macOS.zip pilu-release
+
+    - name: Package Windows Release
+      if: runner.os == 'Windows'
+      run: |
+        mkdir pilu-release
+        copy dist\pilu.exe pilu-release\
+        copy Root.pilu pilu-release\
+        copy User_data.pilu pilu-release\
+        Compress-Archive -Path pilu-release\* -DestinationPath pilu-Windows.zip
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: pilu-${{ runner.os }}
+        path: pilu-*.zip

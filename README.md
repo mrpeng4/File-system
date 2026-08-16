@@ -22,7 +22,11 @@ A Python-based virtual file system CLI application that simulates full directory
 
 ### 1. Authentication
 - On initial launch, if no account details exist in `User_data.pilu`, you will be prompted to sign up by creating a username and password.
+<img width="828" height="458" alt="ezgif com-video-to-gif-converter-3" src="https://github.com/user-attachments/assets/0c082ed6-8f05-4413-b470-ef94d76cd5cc" />
+
 - On subsequent launches, enter your credentials at the prompt to log in.
+<img width="828" height="458" alt="ezgif com-gif-maker" src="https://github.com/user-attachments/assets/f79940d7-8283-4c3c-bafd-ab44697a176e" />
+
 
 ### 2. Command Execution
 Commands are entered at the `:>` terminal prompt. Command arguments are space-separated.
@@ -43,16 +47,57 @@ When creating a file with editing enabled, or when using the `write` or `overwri
 | Command | Alias | Syntax | Description |
 | :--- | :--- | :--- | :--- |
 | listfiles | ls | ls | Displays all files and folders in the current directory. |
+<img width="1200" height="664" alt="listfiles_func" src="https://github.com/user-attachments/assets/a8a57f15-6fdb-4521-90fe-c35e5a242ca1" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | gointo | cd | cd  path | Navigates into the specified folder or path (e.g., cd Root/Documents). |
+<img width="1200" height="664" alt="gointo_func" src="https://github.com/user-attachments/assets/550ac78c-9eb2-48bd-b998-b6fd35234d8d" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | goback | bc | bc | Returns to the parent directory. |
+<img width="1200" height="664" alt="goback_func" src="https://github.com/user-attachments/assets/c987498d-ce4d-4f08-a478-3fbf1bbba084" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | makefolder | mkf | mkf  folder_name | Creates a new subfolder in the current directory. |
+<img width="1200" height="664" alt="Makefolder_func" src="https://github.com/user-attachments/assets/728f1d44-96e6-486b-8c68-fca211b7510e" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | makefile | mkfl | mkfl  filename  extension | Creates a file with the specified extension and offers immediate editing. |
+<img width="1200" height="664" alt="Makefile_func" src="https://github.com/user-attachments/assets/f0bea4e0-b738-40a8-a470-107ae9ac8272" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | read | rd | rd  filename | Displays the text content of a specified file. |
+<img width="828" height="458" alt="ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/5cc1204e-e70f-4885-8c70-a772061f518f" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | write | w | w  filename | Appends new lines of text to an existing file using the interactive editor. |
+<img width="828" height="458" alt="ezgif com-video-to-gif-converter-2" src="https://github.com/user-attachments/assets/7696c78c-6872-409e-8311-d4520aee7988" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | overwrite | or | or  filename | Overwrites the entire content of an existing file using the interactive editor. |
+<img width="1200" height="664" alt="overwrite_func" src="https://github.com/user-attachments/assets/edf8f77f-ee81-481d-a120-ca86fb05c2ce" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | delete | rf | delete  filename | Deletes the file you gave if the file is in the current directory|
+<img width="1200" height="664" alt="delete_func" src="https://github.com/user-attachments/assets/157b8bbb-d0cf-47c5-b912-16e0c0c1ddab" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | clear | no alias | clear | Clears the terminal window, I mean like it just adds like 50 new line so you won't see the previous ones 😅 sorry that was the only option.|
+<img width="1200" height="664" alt="clear_func" src="https://github.com/user-attachments/assets/22606550-9693-4fd6-979e-6cf9cbf6ccf8" />
+
+| Command | Alias | Syntax | Description |
+| :--- | :--- | :--- | :--- |
 | off | qe | off | Exits the virtual file system application. |
+<img width="1200" height="664" alt="off_func" src="https://github.com/user-attachments/assets/4328cf28-89fd-4302-8bd9-a88218d8ebf2" />
 
 ## Supported File Extensions
 

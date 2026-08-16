@@ -39,13 +39,15 @@ When creating a file with editing enabled, or when using the `write` or `overwri
 | Command | Alias | Syntax | Description |
 | :--- | :--- | :--- | :--- |
 | listfiles | ls | ls | Displays all files and folders in the current directory. |
-| gointo | cd | cd <path> | Navigates into the specified folder or path (e.g., cd Root/Documents). |
+| gointo | cd | cd  path | Navigates into the specified folder or path (e.g., cd Root/Documents). |
 | goback | bc | bc | Returns to the parent directory. |
-| makefolder | mkf | mkf <folder_name> | Creates a new subfolder in the current directory. |
-| makefile | mkfl | mkfl <filename> <extension> | Creates a file with the specified extension and offers immediate editing. |
-| read | rd | rd <filename> | Displays the text content of a specified file. |
-| write | w | w <filename> | Appends new lines of text to an existing file using the interactive editor. |
-| overwrite | or | or <filename> | Overwrites the entire content of an existing file using the interactive editor. |
+| makefolder | mkf | mkf  folder_name | Creates a new subfolder in the current directory. |
+| makefile | mkfl | mkfl  filename  extension | Creates a file with the specified extension and offers immediate editing. |
+| read | rd | rd  filename | Displays the text content of a specified file. |
+| write | w | w  filename | Appends new lines of text to an existing file using the interactive editor. |
+| overwrite | or | or  filename | Overwrites the entire content of an existing file using the interactive editor. |
+| delete | rf | delete  filename | Deletes the file you gave if the file is in the current directory|
+| clear | no alias | clear | Clears the terminal window, I mean like it just adds like 50 new line so you won't see the previous ones 😅 sorry that was the only option.|
 | off | qe | off | Exits the virtual file system application. |
 
 ## Supported File Extensions

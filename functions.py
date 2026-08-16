@@ -1,6 +1,7 @@
 import json
 import time
 import os
+import sys
 
 class BaseFunctions:
     def __init__(self):
@@ -106,7 +107,6 @@ class BaseFunctions:
                     with open("Root.pilu", "w") as data:
                         json.dump(self.system, data, indent=4)
                 else:
-                    self.current_path[file] = ""
                     with open("Root.pilu", "w") as data:
                         json.dump(self.system, data, indent=4)
             else:
@@ -168,7 +168,10 @@ class BaseFunctions:
             print(f"this {file} does not exists in the folder")
         else:
             if type(self.current_path[file]) != dict:
-                print(self.current_path[file])
+                if self.current_path[file] != "":
+                    print(self.current_path[file])
+                else:
+                    print("the file is empty")
             else:
                 print(f"you are trying to read a Folder {file} and not a File.")
 
@@ -315,3 +318,5 @@ class BaseFunctions:
 
     def clear(self):
         print("\n" * 50)
+        sys.stdout.write("\033[H\033[2J")
+        sys.stdout.flush()

@@ -260,29 +260,35 @@ class BaseFunctions:
         password = input("Password: ").strip()
         print("for security reasons please provide a answer to these question: Don't worry this data is only saved on you computer")
         question_1 = input("the city you were born: ")
-        question_2 = input("your favrouite item: ")
-        if username != "" and password != "":
-            if " " not in username and " " not in password:
-                user_data = {
-                    "username": username,
-                    "password": password,
-                    "question_1": question_1,
-                    "question_2": question_2
-                }
-                with open("User_data.pilu", "w") as data:
-                    json.dump(user_data, data)
-                self.clear_terminal()
-                print("Your data has been saved!")
-                time.sleep(2)
-                self.clear_terminal()
+        question_2 = input("your favourite item: ")
+        if username.strip().lower() != username.strip().lower():
+            if username.strip().lower() != "forget" and password.strip().lower() != "forget":
+                if username != "" and password != "":
+                    if " " not in username and " " not in password:
+                        user_data = {
+                            "username": username,
+                            "password": password,
+                            "question_1": question_1,
+                            "question_2": question_2
+                        }
+                        with open("User_data.pilu", "w") as data:
+                            json.dump(user_data, data)
+                        self.clear_terminal()
+                        print("Your data has been saved!")
+                        time.sleep(2)
+                        self.clear_terminal()
+                    else:
+                        self.clear_terminal()
+                        print("No spaces allowed in the username or the password")
+                        self.signup()
+                else:
+                    self.clear_terminal()
+                    print("Please enter valid details don't leave anything blank")
+                    self.signup()
             else:
-                self.clear_terminal()
-                print("No spaces allowed in the username or the password")
-                self.signup()
+                print("you cannot keep the username or password as \"forget\"")
         else:
-            self.clear_terminal()
-            print("Please enter valid details don't leave anything blank")
-            self.signup()
+            print("the username can't be the same as the password")
 
     def login(self):
         print("Please login")

@@ -1,3 +1,5 @@
+<img width="1200" height="634" alt="Screen Recording 2026-08-16 at 11 59 41 AM" src="https://github.com/user-attachments/assets/bae16e6d-dd0b-45bd-a37b-84866a46a57b" />
+
 # Virtual File System CLI
 
 A lightweight, terminal-based file system simulator written in Python. This application emulates standard operating system directory structures, file creation, reading, and editing operations while persisting all data to JSON-formatted `.pilu` system files.
